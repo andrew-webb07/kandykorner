@@ -1,5 +1,5 @@
-import React, {useState, useContext, useEffect } from "react"
-import { useHistory } from "react-router"
+import React, { useContext, useEffect } from "react"
+// import { useHistory } from "react-router"
 import {LocationContext } from "./LocationProvider"
 
 export const LocationList = () => {
@@ -9,7 +9,7 @@ export const LocationList = () => {
         getLocations()
     }, [])
 
-    const history = useHistory()
+    // const history = useHistory()
 
     return (
         <>
