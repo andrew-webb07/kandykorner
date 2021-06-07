@@ -4,7 +4,7 @@ import { ApplicationViews } from "./ApplicationViews";
 
 export const KandyKorner = () => (
     <>
-     <Route path="/register">
+     <Route path="/">
       <ApplicationViews />
     </Route>
     </>

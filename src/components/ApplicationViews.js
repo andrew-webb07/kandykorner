@@ -2,15 +2,21 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { LocationList } from "./locations/LocationList"
 import { LocationProvider } from "./locations/LocationProvider"
+import { ProductProvider } from "./products/ProductProvider"
+import { ProductList } from "./products/ProductList"
+
 
 export const ApplicationViews = () => {
     return (
         <>
-            <LocationProvider>
-                <Route exact path="/locations">
+            <ProductProvider>
+                <LocationProvider>
+                {/* <Route exact path="/locations"> */}
                     <LocationList />
-                </Route>
-            </LocationProvider>
+                    <ProductList />
+                {/* </Route> */}
+                </LocationProvider>
+            </ProductProvider>
         </>
     )
 }
