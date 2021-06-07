@@ -11,10 +11,13 @@ export const ApplicationViews = () => {
         <>
             <ProductProvider>
                 <LocationProvider>
-                {/* <Route exact path="/locations"> */}
-                    <LocationList />
-                    <ProductList />
-                {/* </Route> */}
+                    <Route exact path="/locations">
+                        <LocationList />
+                    </Route>
+
+                    <Route exact path="/products">
+                        <ProductList />
+                    </Route>
                 </LocationProvider>
             </ProductProvider>
         </>
