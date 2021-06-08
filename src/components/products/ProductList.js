@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react"
 import {ProductContext } from "./ProductProvider"
 import { useParams, useHistory } from "react-router-dom"
 import "./Product.css"
-import { CustomerCandyContext } from "../customer/CustomerCandyProvider"
+import { CustomerCandyContext } from "../customerCandy/CustomerCandyProvider"
 
 export const ProductList = () => {
     const { getProducts, products } = useContext(ProductContext)

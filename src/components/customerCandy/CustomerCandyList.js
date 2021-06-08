@@ -12,8 +12,11 @@ export const CustomerCandyList= () => {
     }, [])
 
     // const history = useHistory()
+    const currentUserId = parseInt(localStorage.getItem("kandy_customer"))
 
-    const sortedCandies = customerCandies.sort((candy1, candy2) => candy2.product.price - candy1.product.price)
+    const currentUserCandies = customerCandies.filter(customerCandy => customerCandy.customerId === currentUserId)
+
+    const sortedCandies = currentUserCandies.sort((candy1, candy2) => candy2.product.price - candy1.product.price)
 
     // let duplicateCandies = sortedCandies => sortedCandies.filter((item,index) => sortedCandies.indexOf(item) != index)
    
@@ -45,7 +48,10 @@ export const CustomerCandyList= () => {
                 Price
                 {
                     sortedCandies.map(customerCandy =>
-                        <div className="customerCandy_price">${customerCandy.product.price}</div>
+                        <div className="customerCandy_price">{customerCandy.product.price.toLocaleString('en-US', {
+                            style: 'currency',
+                            currency: 'USD',
+                          })}</div>
                     )
                 }
             </h3>
