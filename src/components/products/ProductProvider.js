@@ -8,7 +8,7 @@ export const ProductProvider = (props) => {
     const [ searchTerms, setSearchTerms ] = useState("")
 
     const getProducts = () => {
-        return fetch("http://localhost:8088/products?_expand=productType")
+        return fetch("https://kandy-korner-api.herokuapp.com/products?_expand=productType")
         .then(res => res.json())
         .then(setProducts)
     }
