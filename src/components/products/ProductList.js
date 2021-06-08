@@ -6,8 +6,10 @@ import "./Product.css"
 import { CustomerCandyContext } from "../customerCandy/CustomerCandyProvider"
 
 export const ProductList = () => {
-    const { getProducts, products } = useContext(ProductContext)
+    const { getProducts, products, searchTerms } = useContext(ProductContext)
     const { addCustomerCandy} = useContext(CustomerCandyContext)
+
+    const [ filteredProducts, setFiltered ] = useState([])
 
     const { productId } = useParams();
 
@@ -19,6 +21,15 @@ export const ProductList = () => {
         getProducts()
     }, [])
 
+    useEffect(() => {
+        if (searchTerms !== "") {
+          const subset = products.filter(product => product.name.toLowerCase().includes(searchTerms))
+          setFiltered(subset)
+        } else {
+          setFiltered(products)
+        }
+      }, [searchTerms, products])
+
     const currentUserId = parseInt(localStorage.getItem("kandy_customer"))
 
 
@@ -28,7 +39,7 @@ export const ProductList = () => {
 
         <div className="products">
             {
-                products.map(product => 
+                filteredProducts.map(product => 
                     <div className="product">
                         {product.name}
                         <div className="product_type">
