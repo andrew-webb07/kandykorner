@@ -18,6 +18,9 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/employees">Employees</Link>
             </li>
             <li className="navbar__item">
+                <Link className="navbar__link" to="/customerCandies">My Order</Link>
+            </li>
+            <li className="navbar__item">
                 <Link className="navbar__link" 
                     onClick={
                         (event) => {

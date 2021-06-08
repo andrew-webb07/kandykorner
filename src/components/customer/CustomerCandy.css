@@ -1,0 +1,21 @@
+.customerCandies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .customerCandy {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .customerCandy_name {
+    border: 1px solid goldenrod;
+    padding: 1em
+  }
+
+  .customerCandy_price {
+    border: 1px solid goldenrod;
+    padding: 1em
+  }
