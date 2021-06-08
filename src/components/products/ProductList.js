@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 // import { useHistory } from "react-router"
 import {ProductContext } from "./ProductProvider"
+import "./Product.css"
 
 export const ProductList = () => {
     const { getProducts, products } = useContext(ProductContext)
@@ -18,11 +19,9 @@ export const ProductList = () => {
                 products.map(product => 
                     <div className="product">
                         {product.name}
-                        <ul>
-                        <li>
-                            Product Type: {product.productType.type}
-                        </li>
-                        </ul>
+                        <div className="product_type">
+                            - Product Type: {product.productType.type}
+                        </div>
                     </div>
                     )
             }
