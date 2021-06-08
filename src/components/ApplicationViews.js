@@ -7,8 +7,10 @@ import { ProductList } from "./products/ProductList"
 import { EmployeeProvider } from "./employee/EmployeeProvider"
 import { EmployeeForm } from "./employee/EmployeeForm"
 import { EmployeeList } from "./employee/EmployeeList"
-import { CustomerCandyProvider} from "./customer/CustomerCandyProvider"
-import { CustomerCandyList } from "./customer/CustomerCandyList"
+import { CustomerCandyProvider} from "./customerCandy/CustomerCandyProvider"
+import { CustomerCandyList } from "./customerCandy/CustomerCandyList"
+import { CustomerProvider } from "./customer/CustomerProvider"
+import { CustomerList } from "./customer/CustomerList"
 
 
 export const ApplicationViews = () => {
@@ -18,25 +20,31 @@ export const ApplicationViews = () => {
                 <LocationProvider>
                     <EmployeeProvider>
                         <CustomerCandyProvider>
-                        <Route exact path="/locations">
-                            <LocationList />
-                        </Route>
+                            <CustomerProvider>
+                                <Route exact path="/locations">
+                                    <LocationList />
+                                </Route>
 
-                        <Route exact path="/products">
-                            <ProductList />
-                        </Route>
+                                <Route exact path="/products">
+                                    <ProductList />
+                                </Route>
 
-                        <Route exact path="/employees">
-                            <EmployeeList />
-                        </Route>
+                                <Route exact path="/employees">
+                                    <EmployeeList />
+                                </Route>
 
-                        <Route exact path="/employees/create">
-                            <EmployeeForm />
-                        </Route>
+                                <Route exact path="/employees/create">
+                                    <EmployeeForm />
+                                </Route>
 
-                        <Route exact path="/customerCandies">
-                            <CustomerCandyList />
-                        </Route>
+                                <Route exact path="/customerCandies">
+                                    <CustomerCandyList />
+                                </Route>
+
+                                <Route exact path="/customers">
+                                    <CustomerList />
+                                </Route>
+                            </CustomerProvider>
                         </CustomerCandyProvider>
                     </EmployeeProvider>
                 </LocationProvider>
