@@ -7,13 +7,13 @@ export const CustomerCandyProvider = (props) => {
     const [customerCandies, setCustomerCandies] = useState([])
 
     const getCustomerCandies = () => {
-        return fetch("http://localhost:8088/customerCandies?_expand=product&_expand=customer")
+        return fetch("https://kandy-korner-api.herokuapp.com/customerCandies?_expand=product&_expand=customer")
         .then(res => res.json())
         .then(setCustomerCandies)
     }
 
     const addCustomerCandy = CustomerCandyId => {
-        return fetch("http://localhost:8088/customerCandies", {
+        return fetch("https://kandy-korner-api.herokuapp.com/customerCandies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

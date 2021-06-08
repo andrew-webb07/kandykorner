@@ -25,7 +25,7 @@ export const EmployeeForm = () => {
       setEmployee(newEmployee)
     }
 
-    const handleIsManager = (event) => {
+    const handleIsManager = () => {
         const newEmployee = {...employee}
 
         newEmployee.isManager = !newEmployee.isManager
@@ -33,7 +33,7 @@ export const EmployeeForm = () => {
         setEmployee(newEmployee)
     }
 
-    const handleIsFullTime = (event) => {
+    const handleIsFullTime = () => {
         const newEmployee = {...employee}
 
         newEmployee.fullTime = !newEmployee.fullTime
