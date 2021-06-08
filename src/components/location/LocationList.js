@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react"
 // import { useHistory } from "react-router"
 import {LocationContext } from "./LocationProvider"
+import "./Location.css"
 
 export const LocationList = () => {
     const { getLocations, locations } = useContext(LocationContext)
