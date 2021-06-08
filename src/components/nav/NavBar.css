@@ -9,5 +9,6 @@
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
-    color: white
+    background-color: white;
+    border: rgb(231, 0, 19) .5em solid
 }
