@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import "./Employee.css"
 
 export const EmployeeList = () => {
-    const { getEmployees, employees } = useContext(EmployeeContext)
+    const { getEmployees, employees, deleteEmployee } = useContext(EmployeeContext)
 
     useEffect(() => {
         getEmployees()
@@ -31,6 +31,9 @@ export const EmployeeList = () => {
                         <div>{employee.isManager ? "Is a Manager" : ""}</div>
                         <div>{employee.fullTime ? "Is Full Time" : ""}</div>
                         <div>Makes ${employee.hourlyRate} per hour</div>
+                        <button onClick={() => {history.push("/employees")
+                            deleteEmployee(employee.id)}
+                            }>Fire Employee</button>
                     </div>
                     </>
                     )
