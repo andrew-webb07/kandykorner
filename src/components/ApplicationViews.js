@@ -11,6 +11,7 @@ import { CustomerCandyProvider} from "./customerCandy/CustomerCandyProvider"
 import { CustomerCandyList } from "./customerCandy/CustomerCandyList"
 import { CustomerProvider } from "./customer/CustomerProvider"
 import { CustomerList } from "./customer/CustomerList"
+import { ProductSearch } from "./products/ProductSearch"
 
 
 export const ApplicationViews = () => {
@@ -26,6 +27,7 @@ export const ApplicationViews = () => {
                                 </Route>
 
                                 <Route exact path="/products">
+                                    <ProductSearch />
                                     <ProductList />
                                 </Route>
 
