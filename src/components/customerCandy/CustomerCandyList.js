@@ -1,7 +1,6 @@
 import { CustomerCandyContext } from "./CustomerCandyProvider"
 // import { useHistory } from 'react-router-dom';
-import React, { useContext, useEffect } from "react"
-import { useHistory } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react"
 import "./CustomerCandy.css"
 
 export const CustomerCandyList= () => {
@@ -11,15 +10,45 @@ export const CustomerCandyList= () => {
         getCustomerCandies()
     }, [])
 
-    // const history = useHistory()
     const currentUserId = parseInt(localStorage.getItem("kandy_customer"))
 
-    const currentUserCandies = customerCandies.filter(customerCandy => customerCandy.customerId === currentUserId)
+    const [candies, setCandy] = useState([])
 
-    const sortedCandies = currentUserCandies.sort((candy1, candy2) => candy2.product.price - candy1.product.price)
+    const sortedCandies = candies.sort((candy1, candy2) => candy2.price - candy1.price)
 
-    // let duplicateCandies = sortedCandies => sortedCandies.filter((item,index) => sortedCandies.indexOf(item) != index)
-   
+    useEffect(() => {
+        const currentUserCandies = customerCandies.filter(customerCandy => customerCandy.customerId === currentUserId)
+
+       
+        let singleUserCandies = []
+        let candyQuantityObject = {}
+
+        const oneRingToRuleThemAll = []
+
+        for (const currentUserCandy of currentUserCandies) {
+            console.log(currentUserCandy)
+            if(currentUserCandy.product.name in candyQuantityObject) {
+                candyQuantityObject[currentUserCandy.product.name] += 1
+            } else {
+                candyQuantityObject[currentUserCandy.product.name] = 1
+                singleUserCandies.push(currentUserCandy.product)
+            }
+        }
+
+        for (const candyQuantityObjectProperty in candyQuantityObject) {
+            const foundCandy = singleUserCandies.find(candy => candy.name === candyQuantityObjectProperty)
+            foundCandy.quantity = candyQuantityObject[foundCandy.name]
+            oneRingToRuleThemAll.push(foundCandy)
+        }
+
+        setCandy(oneRingToRuleThemAll)
+        console.log(candyQuantityObject)
+        console.log(singleUserCandies)
+    }, [customerCandies])
+
+    const totalPrice = (candyObject) => {
+        return candyObject.price * candyObject.quantity
+    }
 
     return (
         <>
@@ -32,23 +61,31 @@ export const CustomerCandyList= () => {
                         <>
                             <div className="customerCandy_name">
                                 {
-                                    customerCandy.product.name ? customerCandy.product.name : ""
+                                  customerCandy.name
                                 }
                                 </div>
                         </>
                     )
                 }
             </h3>
-            {/* <h3>Quantity
+            <h3>Quantity
                 {
-                    duplicateCandies(sortedCandies).length
+                    sortedCandies.map(customerCandy => 
+                        <>
+                            <div className="customerCandy_name">
+                                {
+                                  customerCandy.quantity
+                                }
+                                </div>
+                        </>
+                    )
                 }
-            </h3> */}
+            </h3>
             <h3>
                 Price
                 {
                     sortedCandies.map(customerCandy =>
-                        <div className="customerCandy_price">{customerCandy.product.price.toLocaleString('en-US', {
+                        <div className="customerCandy_price">{totalPrice(customerCandy).toLocaleString('en-US', {
                             style: 'currency',
                             currency: 'USD',
                           })}</div>
